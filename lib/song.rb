@@ -1,11 +1,14 @@
 class Song 
-    attr_accessor
-    def initialize
-      
+    @@all = []
+    attr_accessor:artist
+    
+    def initialize(name)
+        @name = name
+        @@all << self
     end  
+    
     def self.all
-      
-      @all
+      @@all
     end
    
 end
