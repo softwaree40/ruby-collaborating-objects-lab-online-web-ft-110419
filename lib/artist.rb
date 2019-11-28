@@ -19,11 +19,15 @@ class Artist
         Song.all.select {|song| song.artist == self }
      end
      
-      def add_song(song)
-          song.artist = self
+      def add_song(song_one)
+          song_one.artist = self
       end
-      def self.find_or_create_by_name
-          artist_1 = Artist.new(name) 
-          artist_1
+      def self.find_or_create_by_name(name)
+           
+           
+           artist_1 = Artist.new(name)
+           artist_2 = Artist.new(name)
+        #binding.pry
+          
       end
 end
