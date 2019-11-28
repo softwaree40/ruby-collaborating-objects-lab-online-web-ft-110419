@@ -5,7 +5,7 @@ class Artist
       def initialize(name)
        @name = name
       @@all  << self
-      
+       
        #binding.pry
       end
      
@@ -17,17 +17,21 @@ class Artist
      
      def songs
         Song.all.select {|song| song.artist == self }
+        #binding.pry
      end
      
       def add_song(song_one)
           song_one.artist = self
       end
       def self.find_or_create_by_name(name)
-           
-           
-           artist_1 = Artist.new(name)
-           artist_2 = Artist.new(name)
-        #binding.pry
-          
-      end
+          artist = self.all.detect  {|artist| artist.name == name}
+          artist ||= Artist.new(name)
+          artist
+     end
+    def print_songs
+        binding.pry
+        Song.all.select do |song|
+        
+       end 
+    end
 end
