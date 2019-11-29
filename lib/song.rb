@@ -1,6 +1,6 @@
 class Song 
     @@all = []
-    attr_accessor:artist,:name
+    attr_accessor:artist,:name,:genre
     
     def initialize(name)
         @name = name
@@ -14,12 +14,20 @@ class Song
       song_name = file.split(" - ")[1]
       artist = file.split(" - ")[0]
       song= self.new(song_name)
-      song.artist= artist
-      song.artist.name
+      song.artist = Artist.new(artist)
+      
+      
+      song
         
     end
     def artist_name
       self.artist= Artist.find_or_create_by_name(name)
       self.artist.add_song(self)
+      binding.pry
+    end
+    
+    
+    def artist_name=(name)
+       self.artist = Artist.find_or_create_by_name(name)
     end
 end
